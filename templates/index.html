@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Attendance System</title>
+    <style>
+        body {
+            
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #f7f7f7;
+            display: flex;
+            flex-direction: column; /* Align items in a column */
+            justify-content: center;
+            align-items: left;
+            position: relative;
+            background-image: url('static/new.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .box {
+            background-color: rgba(0, 0, 0, 0.6); /* Transparent black background */
+            width: 35%; /* Takes up 40% of the width */
+            padding: 40px;
+            margin-left: 5%; /* Adds some space from the left */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .heading {
+            font-family: 'Algerian', sans-serif; /* Plain white background */
+            color: #ffffff; /* Black text */
+            padding: 10px;
+            margin-top: 0px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            font-size: 30px;
+            width: 100%;
+            text-align: center;
+        }
+        .instructor-heading {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 60px;
+    color: #ffffff; /* Black text */
+    text-align: left; /* Center align the text */
+    margin-bottom: 50px;
+    margin-left: 110px; /* Add spacing below the heading */
+}
+
+        .buttons {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column; /* Arrange buttons vertically */
+            gap: 20px;
+            width: 80%;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            width: 100%; /* Full width buttons */
+            color: #000000; /* Black text */
+            background-color: #9eefa6; /* Plain white background */
+            border: 2px solid #08581e; /* Blue border for contrast */
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #f0f0f0; /* Lighter white on hover */
+            transform: scale(1.05); /* Slightly enlarge */
+        }
+        button:active {
+            transform: scale(0.95); /* Pop effect on click */
+        }
+        a {
+            display: inline-block;
+            font-size: 16px;
+            color: #000000; /* Black text */
+            background-color: #9eefa6; /* Plain white background */
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            border: 2px solid #08581e; /* Blue border */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, background-color 0.3s ease;
+            text-align: center;
+        }
+        a:hover {
+            background-color: #f0f0f0; /* Lighter white on hover */
+            transform: scale(1.05); /* Slightly enlarge */
+        }
+        .top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px; /* Space between the buttons */
+}
+
+.logout, .reset {
+    font-size: 16px;
+    padding: 12px 20px;
+    background-color: #ffcccc; /* Pastel red background */
+    color: #000000; /* Black text */
+    text-decoration: none;
+    border: 2px solid #b30000; /* Slightly darker red border */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    text-align: center;
+}
+
+.logout:hover, .reset:hover {
+    background-color: #ff9999; /* Slightly lighter pastel red on hover */
+    transform: scale(1.05);
+}
+        
+    </style>
+    
+    
+    
+    <script>
+        function startAttendance() {
+            fetch('/start-attendance', {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(err => console.error(err));
+        }
+
+        function stopAttendance() {
+            fetch('/stop-attendance', {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(err => console.error(err));
+        }
+    </script>
+</head>
+<body>
+    <div class="top-right">
+        <a href="/reset-credentials" class="reset">Reset Credentials</a>
+        <a href="/logout" class="logout">Logout</a>
+    </div>
+    <h1 class="instructor-heading">Hello Instructor!</h1>
+    <div class="box">
+        
+        <h1 class="heading">Face Attendance System</h1>
+        <div class="buttons">
+            <button onclick="startAttendance()" class="start">Start Attendance</button>
+            <button onclick="stopAttendance()" class="stop">Stop Attendance</button>
+        </div>
+        
+    </div>
+</body>
+
+
+</html>
