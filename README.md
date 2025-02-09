@@ -21,7 +21,8 @@ Step5: Install all the required PYTHON Libraries
         ->flask  
         ->threading      
         (This Process May take some time)     
-Step6: Now run EncodeGenerator.py code and this will seek most time.      
+Step6: Now run EncodeGenerator.py code and this will seek most time.  
+        Add student data in excel and update excel formulae according to requirements.
 Step7: Just run code from app.py.       
 Step8: Offical login and attendance started:         
 Step9: Just point your face in front of camera till you see ATTENDANCE MARKED IN GREEN COLOR       
